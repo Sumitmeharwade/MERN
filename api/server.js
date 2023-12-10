@@ -5,6 +5,7 @@ const mongoose = require('mongoose'); //connection config
 const uri = process.env.ATLAS_URI
 const exercisesRouter = require('./routes/exercises') // add routing files
 const usersRouter = require('./routes/users')
+const adminRouter=require('./routes/admin')
 
 mongoose.connect(uri,{useNewUrlParser:true});
 const connection = mongoose.connection;
@@ -19,7 +20,8 @@ app.use(cors())  //middleware
 app.use(express.json());
 app.use('/exercises',exercisesRouter);// add routing files
 app.use('/users',usersRouter)
- 
+app.use('/admin',adminRouter)
+
 app.listen(port,()=>{
     console.log(`Server is running on port : ${port}`);
 })
